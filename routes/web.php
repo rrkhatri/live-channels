@@ -13,9 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', \App\Http\Livewire\Channels\Index::class)->name('channels');
 
 Route::middleware([
     'auth:sanctum',
@@ -23,7 +21,5 @@ Route::middleware([
     'verified'
 ])->group(function () {
     Route::view('/dashboard', 'dashboard')->name('dashboard');
-
-    Route::get('channels', \App\Http\Livewire\Channels\Index::class)->name('channels');
 });
 
